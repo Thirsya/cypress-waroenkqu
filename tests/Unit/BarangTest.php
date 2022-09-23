@@ -55,13 +55,13 @@ class BarangTest extends TestCase
         $response = $this->actingAs($this->user)->get('/barang');
         $response = $this->post('/barang', [
             'Kategori' => 1,
-            'nama_barang' => 'Ghani',
+            'nama_barang' => 'Thirsya',
             'harga' => 100,
             'stok' => 1,
             'keterangan' => 'Sembarang',
             'foto' => 'asset/img/user.png',
         ]);
-        $response->assertSeeText('Ghani');
+        $response->assertSeeText('Thirsya');
         $response->assertSeeText(100);
     }
 
@@ -97,7 +97,7 @@ class BarangTest extends TestCase
         $response = $this->actingAs($this->user)->get('/barang');
         $response = $this->post('/barang', [
             'Kategori' => 1,
-            'nama_barang' => 'Ghani',
+            'nama_barang' => 'Thirsya',
             'harga' => 100,
             'stok' => 1,
             'keterangan' => 'Sembarang',
@@ -106,10 +106,10 @@ class BarangTest extends TestCase
 
         $response = $this->actingAs($this->user)->get('/barang/edit');
         $response->assertSeeText('Nama Barang');
-        $response->assertSeeText('Ghani');
-        $response = Barang::where('nama_barang', 'Ghani')->update(['nama_barang' => 'testEditBarang']);
+        $response->assertSeeText('Thirsya');
+        $response = Barang::where('nama_barang', 'Thirsya')->update(['nama_barang' => 'testEditBarang']);
         $response = $this->actingAs($this->user)->get('/barang');
-        $response->assertDontSeeText('Ghani');
+        $response->assertDontSeeText('Thirsya');
     }
 
     public function test_delete_barang()
